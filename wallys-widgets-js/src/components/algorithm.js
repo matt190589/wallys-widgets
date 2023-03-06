@@ -1,5 +1,6 @@
 import OrderDisplay from "./OrderDisplay";
 import { useState } from "react";
+import "../App.css";
 
 export default function Algorithm() {
   const [userOrder, setUserOrder] = useState("");
@@ -18,16 +19,19 @@ export default function Algorithm() {
   };
   return (
     <div>
-      <h1>Wallys Widgets</h1>
+      <h3>
+        Please enter the number of widgets you require in the box below and
+        click the order button.
+      </h3>
       <form onSubmit={handleClick}>
         <input
-          className="input-box"
-          placeholder="Type widgets"
+          className="card-input"
+          placeholder="Type number here"
           type="text"
           onChange={userInput}
           value={userOrder}
         ></input>
-        <button>Order</button>
+        <button className="card-button">Order</button>
         <OrderDisplay userOrder={userOrder} />
       </form>
     </div>
