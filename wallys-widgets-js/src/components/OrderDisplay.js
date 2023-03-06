@@ -12,30 +12,45 @@ export default function OrderDisplay(props) {
     if (props.userOrder === 0) {
       return 0;
     } else {
-      let factor = 0;
+      let numberOfPacks = 0;
       let remainderFromXLPack = props.userOrder % xlPack;
-      factor = (props.userOrder - remainderFromXLPack) / xlPack;
-      if (factor > 0) {
-        orderArray.push(factor > 1 ? factor + " x 5000s" : factor + " x 5000");
+      numberOfPacks = (props.userOrder - remainderFromXLPack) / xlPack;
+      if (numberOfPacks > 0) {
+        orderArray.push(
+          numberOfPacks > 1
+            ? numberOfPacks + ` x ${xlPack}s`
+            : numberOfPacks + ` x ${xlPack}`
+        );
       }
       let remainderFromLPacks = remainderFromXLPack % lPack;
-      factor = (remainderFromXLPack - remainderFromLPacks) / lPack;
-      if (factor > 0) {
-        orderArray.push(factor > 1 ? factor + " x 2000s" : factor + " x 2000");
+      numberOfPacks = (remainderFromXLPack - remainderFromLPacks) / lPack;
+      if (numberOfPacks > 0) {
+        orderArray.push(
+          numberOfPacks > 1
+            ? numberOfPacks + ` x ${lPack}s`
+            : numberOfPacks + ` x ${lPack}`
+        );
       }
       let remainderFromMPacks = remainderFromLPacks % mPack;
-      factor = (remainderFromLPacks - remainderFromMPacks) / mPack;
-      if (factor > 0) {
-        orderArray.push(factor > 1 ? factor + " x 1000s" : factor + " x 1000");
+      numberOfPacks = (remainderFromLPacks - remainderFromMPacks) / mPack;
+      if (numberOfPacks > 0) {
+        orderArray.push(
+          numberOfPacks > 1
+            ? numberOfPacks + ` x ${mPack}s`
+            : numberOfPacks + ` x ${mPack}`
+        );
       }
-      let remainderFromSPacks = remainderFromMPacks % sPack;
-      factor = (remainderFromMPacks - remainderFromSPacks) / sPack;
-      if (factor > 0) {
-        orderArray.push(factor > 1 ? factor + " x 500s" : factor + " x 500");
-      }
-      factor = remainderFromSPacks / xsPack;
-      if (factor > 0) {
-        orderArray.push(factor > 1 ? 2 + " x 250s" : 1 + " x 250");
+      numberOfPacks = remainderFromMPacks / xsPack;
+      if (numberOfPacks > 0) {
+        orderArray.push(
+          numberOfPacks > 3
+            ? `2 x ${sPack}s`
+            : numberOfPacks > 2
+            ? `1 x ${sPack} and 1 x ${xsPack}`
+            : numberOfPacks > 1
+            ? `1 x ${sPack}`
+            : `1 x ${xsPack}`
+        );
       }
     }
     formatOrder(orderArray);
@@ -50,7 +65,6 @@ export default function OrderDisplay(props) {
         " and " +
         orderArray[orderArray.length - 1];
       orderArray.pop();
-      console.log("ordArr", orderArray);
       finalWidgetPacks = orderArray.join(", ");
       return finalWidgetPacks;
     }
