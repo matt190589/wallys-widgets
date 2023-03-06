@@ -1,8 +1,7 @@
-import OrderDisplay from "./OrderDisplay";
 import { useState } from "react";
-import "../App.css";
+import OrderDisplay from "./WidgetCalculator";
 
-export default function OrderForm() {
+export default function TrackOrder() {
   const [userOrder, setUserOrder] = useState("");
   const [orderButtonStatus, setOrderButtonStatus] = useState(false);
   const userInput = (e) => {
@@ -33,7 +32,7 @@ export default function OrderForm() {
           onChange={userInput}
           value={userOrder}
         ></input>
-        <button className="card-button">Order</button>
+        <button className="card-button">Order widgets</button>
       </form>
     </div>
   ) : (
