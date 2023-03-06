@@ -2,16 +2,19 @@ import OrderDisplay from "./OrderDisplay";
 import { useState } from "react";
 
 export default function Algorithm() {
-  const [userOrder, setUserOrder] = useState();
-  const userInput = (event) => {
-    const value = event.target.value.toLowerCase().trim();
+  const [userOrder, setUserOrder] = useState("");
+  const userInput = (e) => {
+    const value = e.target.value.trim();
     setUserOrder(value);
-    console.log("order", userOrder);
   };
 
   const handleClick = (e) => {
     e.preventDefault();
-    // setUserOrder("");
+    if (/^\d+$/.test(userOrder)) {
+      setUserOrder("");
+    } else {
+      alert("Please enter a valid number.");
+    }
   };
   return (
     <div>
@@ -22,6 +25,7 @@ export default function Algorithm() {
           placeholder="Type widgets"
           type="text"
           onChange={userInput}
+          value={userOrder}
         ></input>
         <button>Order</button>
         <OrderDisplay userOrder={userOrder} />

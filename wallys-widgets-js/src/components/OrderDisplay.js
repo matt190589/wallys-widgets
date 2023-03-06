@@ -53,9 +53,7 @@ export default function OrderDisplay(props) {
   return (
     <div>
       <h3>Your order</h3>
-      <p>
-        `Order outline: {props.userOrder} & userOrder:{finalOrder}`{" "}
-      </p>
+      <p> Widget Order:{finalOrder} </p>
     </div>
   );
 }
