@@ -1,6 +1,5 @@
-import OrderDisplay from "./OrderDisplay";
 import { useState } from "react";
-import "../App.css";
+import WidgetCalculator from "./WidgetCalculator";
 
 export default function OrderForm() {
   const [userOrder, setUserOrder] = useState("");
@@ -33,13 +32,13 @@ export default function OrderForm() {
           onChange={userInput}
           value={userOrder}
         ></input>
-        <button className="card-button">Order</button>
+        <button className="card-button">Order widgets</button>
       </form>
     </div>
   ) : (
     <div>
       <h1>You order is:</h1>
-      <OrderDisplay userOrder={userOrder} handleClick={handleClick} />
+      <WidgetCalculator userOrder={userOrder} handleClick={handleClick} orderButtonStatus={orderButtonStatus} />
     </div>
   );
 }

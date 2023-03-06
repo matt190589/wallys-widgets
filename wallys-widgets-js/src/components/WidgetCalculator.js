@@ -1,20 +1,22 @@
 import "../App.css";
+import OrderCard from "./OrderCard";
 
-export default function OrderDisplay(props) {
+export default function WidgetCalculator(props) {
   const xlPack = 5000;
   const lPack = 2000;
   const mPack = 1000;
   const sPack = 500;
   const xsPack = 250;
   let orderArray = [];
-  let finalWidgetPacks = "";
+  const userOrder = Number(props.userOrder);
+  let finalWidgetPacks = "0 packs";
   function widgetCounter() {
-    if (props.userOrder === 0) {
-      return 0;
+    if (userOrder === 0) {
+      return finalWidgetPacks;
     } else {
       let numberOfPacks = 0;
-      let remainderFromXLPack = props.userOrder % xlPack;
-      numberOfPacks = (props.userOrder - remainderFromXLPack) / xlPack;
+      let remainderFromXLPack = userOrder % xlPack;
+      numberOfPacks = (userOrder - remainderFromXLPack) / xlPack;
       if (numberOfPacks > 0) {
         orderArray.push(
           numberOfPacks > 1
@@ -70,13 +72,5 @@ export default function OrderDisplay(props) {
     }
   }
   widgetCounter();
-  return (
-    <div className="order-card">
-      <h2>Your order</h2>
-      <p> Widget Packs: {finalWidgetPacks} </p>
-      <p> Tracking number: </p>
-      <button onClick={() => window.location.reload()}>Reorder</button>
-      <button> Track Order</button>
-    </div>
-  );
+  return <OrderCard finalWidgetPacks={finalWidgetPacks} />;
 }

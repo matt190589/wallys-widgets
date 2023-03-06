@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import OrderDisplay from "../components/OrderDisplay";
+import OrderDisplay from "../components/WidgetCalculator";
 
 describe("OrderDisplay component", () => {
   it("renders the order details correctly", () => {
