@@ -6,6 +6,7 @@ export default function Algorithm() {
   const [userOrder, setUserOrder] = useState("");
   const userInput = (e) => {
     const value = e.target.value.trim();
+    console.log(value);
     setUserOrder(value);
   };
 
