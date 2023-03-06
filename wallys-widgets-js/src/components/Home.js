@@ -1,16 +1,7 @@
 import "../App.css";
-import { useState } from "react";
-import TrackOrder from "./TrackOrder";
 import { Link } from "react-router-dom";
 
 export default function Home() {
-  const [trackButton, setTrackButton] = useState(false);
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    setTrackButton(true);
-  };
-
   return (
     <div>
       <h3>

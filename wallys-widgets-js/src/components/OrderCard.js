@@ -10,7 +10,7 @@ export default function OrderCard(props) {
       <button>
         <Link to="/">Home</Link>
       </button>
-      <button>
+      <button onClick={() => window.location.reload()}>
         <Link to="/order-form">Order More</Link>
       </button>
     </div>

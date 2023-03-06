@@ -1,7 +1,7 @@
 import { useState } from "react";
-import OrderDisplay from "./WidgetCalculator";
+import WidgetCalculator from "./WidgetCalculator";
 
-export default function TrackOrder() {
+export default function OrderForm() {
   const [userOrder, setUserOrder] = useState("");
   const [orderButtonStatus, setOrderButtonStatus] = useState(false);
   const userInput = (e) => {
@@ -38,7 +38,7 @@ export default function TrackOrder() {
   ) : (
     <div>
       <h1>You order is:</h1>
-      <OrderDisplay userOrder={userOrder} handleClick={handleClick} />
+      <WidgetCalculator userOrder={userOrder} handleClick={handleClick} orderButtonStatus={orderButtonStatus} />
     </div>
   );
 }

@@ -2,7 +2,7 @@ import OrderDisplay from "./WidgetCalculator";
 import { useState } from "react";
 import "../App.css";
 
-export default function OrderForm() {
+export default function TrackOrder() {
   const [trackingNumber, setTrackingNumber] = useState("");
   const [orderButtonStatus, setOrderButtonStatus] = useState(false);
   const userInput = (e) => {
@@ -29,7 +29,7 @@ export default function OrderForm() {
           onChange={userInput}
           value={trackingNumber}
         ></input>
-        <button className="card-button">Order</button>
+        <button className="card-button">Track Order</button>
       </form>
     </div>
   ) : (
