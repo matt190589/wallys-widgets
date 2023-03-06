@@ -2,8 +2,9 @@ import OrderDisplay from "./OrderDisplay";
 import { useState } from "react";
 import "../App.css";
 
-export default function Algorithm() {
+export default function OrderForm() {
   const [userOrder, setUserOrder] = useState("");
+  const [orderButtonStatus, setOrderButtonStatus] = useState(false);
   const userInput = (e) => {
     const value = e.target.value.trim();
     console.log(value);
@@ -13,12 +14,12 @@ export default function Algorithm() {
   const handleClick = (e) => {
     e.preventDefault();
     if (/^\d+$/.test(userOrder)) {
-      setUserOrder("");
+      setOrderButtonStatus(true);
     } else {
       alert("Please enter a valid number.");
     }
   };
-  return (
+  return orderButtonStatus === false ? (
     <div>
       <h3>
         Please enter the number of widgets you require in the box below and
@@ -33,8 +34,12 @@ export default function Algorithm() {
           value={userOrder}
         ></input>
         <button className="card-button">Order</button>
-        <OrderDisplay userOrder={userOrder} />
       </form>
+    </div>
+  ) : (
+    <div>
+      <h1>You order is:</h1>
+      <OrderDisplay userOrder={userOrder} handleClick={handleClick} />
     </div>
   );
 }

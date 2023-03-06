@@ -72,8 +72,11 @@ export default function OrderDisplay(props) {
   widgetCounter();
   return (
     <div className="order-card">
-      <h3>Your order</h3>
-      <p> Widget Order: {finalWidgetPacks} </p>
+      <h2>Your order</h2>
+      <p> Widget Packs: {finalWidgetPacks} </p>
+      <p> Tracking number: </p>
+      <button onClick={() => window.location.reload()}>Reorder</button>
+      <button> Track Order</button>
     </div>
   );
 }
