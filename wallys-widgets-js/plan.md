@@ -41,3 +41,22 @@ Stretch Goals
 //Explain the basic functionality
 //Explain deployment
 //Possibly even add the color palette
+
+//Refactoring Widget Calculator (Using object)
+
+function WidgetCalculator (orderedWidgets) {
+const packs = { xlPack: 5000, lPack: 2000, mPack: 1000, sPack: 500, xsPack: 250 },
+orderArray = [];
+
+if (orderedWidgets === 0) return '0 packs';
+
+for (let key in time) {
+if (orderedWidgets >= packs[key]) {
+const factor = Math.floor(orderedWidgets/packs[key]);
+orderArray.push(factor += factor > 1 ? ' ' + key + 's' : ' ' + key);
+orderedWidgets = orderedWidgets % pack[key];
+}
+}
+
+return orderArray.length > 1 ? res.join(', ').replace(/,([^,]\*)$/,' and'+'$1') : res[0]
+}
