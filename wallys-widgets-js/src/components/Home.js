@@ -5,9 +5,9 @@ export default function Home() {
   return (
     <div>
       <h3>
-        Welcome to Wally's Widget.
+        Welcome to Wally's Widgets.
         <br /> Please choose Track Order to check on an existing order or choose
-        place order to order widgets.
+        Place Order to order widgets.
       </h3>
       <button className="card-button">
         <Link to="/track-order">Track Order</Link>
