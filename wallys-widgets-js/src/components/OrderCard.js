@@ -6,7 +6,7 @@ export default function OrderCard(props) {
     <div className="order-card">
       <h2>Your order</h2>
       <p> Widget Packs: {props.finalWidgetPacks} </p>
-      <p> Tracking number: </p>
+      <p> Tracking number: {props.trackingNumber} </p>
       <button>
         <Link to="/">Home</Link>
       </button>
