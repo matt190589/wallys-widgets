@@ -1,19 +1,31 @@
 import WidgetCalculator from "./WidgetCalculator";
 import { useState } from "react";
 import "../App.css";
+import { supabase } from "../supabaseClient";
 
 export default function TrackOrder() {
   const [trackingNumber, setTrackingNumber] = useState("");
   const [orderButtonStatus, setOrderButtonStatus] = useState(false);
+  const [orderData, setOrderData] = useState(null);
+
   const userInput = (e) => {
     const value = e.target.value.trim();
     console.log(value);
     setTrackingNumber(value);
   };
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
     setOrderButtonStatus(true);
+    const { data, error } = await supabase
+      .from("widget-orders")
+      .select("*")
+      .eq("tracking_number", trackingNumber);
+    if (error) {
+      console.log(error);
+    } else {
+      setOrderData(data[0]);
+    }
   };
   return orderButtonStatus === false ? (
     <div>
@@ -34,8 +46,18 @@ export default function TrackOrder() {
     </div>
   ) : (
     <div>
-      <h1>You order is:</h1>
-      <WidgetCalculator trackingNumber={trackingNumber} handleClick={handleClick} />
+      {orderData ? (
+        <>
+          <h1>You order is:</h1>
+          <WidgetCalculator
+            trackingNumber={trackingNumber}
+            handleClick={handleClick}
+            newOrder={orderData}
+          />
+        </>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 }
