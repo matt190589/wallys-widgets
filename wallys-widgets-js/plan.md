@@ -50,13 +50,10 @@ orderArray = [];
 
 if (orderedWidgets === 0) return '0 packs';
 
-for (let key in time) {
+for (let key in packs) {
 if (orderedWidgets >= packs[key]) {
-const factor = Math.floor(orderedWidgets/packs[key]);
+let factor = Math.floor(orderedWidgets/packs[key]);
 orderArray.push(factor += factor > 1 ? ' ' + key + 's' : ' ' + key);
-orderedWidgets = orderedWidgets % pack[key];
+orderedWidgets = orderedWidgets % packs[key];
 }
-}
-
-return orderArray.length > 1 ? res.join(', ').replace(/,([^,]\*)$/,' and'+'$1') : res[0]
 }

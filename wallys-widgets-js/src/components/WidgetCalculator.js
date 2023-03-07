@@ -2,15 +2,16 @@ import "../App.css";
 import OrderCard from "./OrderCard";
 
 export default function WidgetCalculator(props) {
+  let userOrder = Number(props.newOrder.user_order);
+  const trackingNumber = props.newOrder.tracking_number;
+  let finalWidgetPacks = "0 packs";
+
   const xlPack = 5000;
   const lPack = 2000;
   const mPack = 1000;
   const sPack = 500;
   const xsPack = 250;
   let orderArray = [];
-  const userOrder = Number(props.newOrder.user_order);
-  const trackingNumber = props.newOrder.tracking_number;
-  let finalWidgetPacks = "0 packs";
 
   function widgetCounter() {
     if (userOrder === 0) {
@@ -81,3 +82,25 @@ export default function WidgetCalculator(props) {
     />
   );
 }
+
+//Refactoring using a pack object
+
+// function widgetCounter() {
+// const packs = {
+//     xlPack: 5000,
+//     lPack: 2000,
+//     mPack: 1000,
+//     sPack: 500,
+//     xsPack: 250,
+//   },
+//   orderArray = [];
+//   if (userOrder === 0) return finalWidgetPacks;
+//   for (let key in packs) {
+//     if (userOrder >= packs[key]) {
+//       let factor = Math.floor(userOrder / packs[key]);
+//       orderArray.push((factor += factor > 1 ? " " + key + "s" : " " + key));
+//       userOrder = userOrder % packs[key];
+//     }
+//   }
+//   formatOrder(orderArray);
+// }
