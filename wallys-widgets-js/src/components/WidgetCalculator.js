@@ -51,28 +51,15 @@ export default function WidgetCalculator(props) {
           numberOfPacks > 3
             ? `2 x ${sPack}s`
             : numberOfPacks > 2
-            ? `1 x ${sPack} and 1 x ${xsPack}`
+            ? `1 x ${sPack}, 1 x ${xsPack}`
             : numberOfPacks > 1
             ? `1 x ${sPack}`
             : `1 x ${xsPack}`
         );
       }
     }
-    formatOrder(orderArray);
-  }
-  function formatOrder(orderArray) {
-    if (orderArray.length === 1) {
-      finalWidgetPacks = orderArray[0];
-      return finalWidgetPacks;
-    } else {
-      orderArray[orderArray.length - 2] =
-        orderArray[orderArray.length - 2] +
-        " and " +
-        orderArray[orderArray.length - 1];
-      orderArray.pop();
-      finalWidgetPacks = orderArray.join(", ");
-      return finalWidgetPacks;
-    }
+    finalWidgetPacks = orderArray.join(", ");
+    return finalWidgetPacks;
   }
   widgetCounter();
   return (
