@@ -2,6 +2,7 @@ import WidgetCalculator from "./WidgetCalculator";
 import { useState } from "react";
 import "../App.css";
 import { supabase } from "../supabaseClient";
+import { Link } from "react-router-dom";
 
 export default function TrackOrder() {
   const [trackingNumber, setTrackingNumber] = useState("");
@@ -56,7 +57,12 @@ export default function TrackOrder() {
           />
         </>
       ) : (
-        <p>Loading...</p>
+        <div className="order-card">
+          <p>Sorry, tracking number not found.</p>
+          <button>
+            <Link to="/">Home</Link>
+          </button>
+        </div>
       )}
     </div>
   );
