@@ -1,4 +1,4 @@
-import OrderDisplay from "./WidgetCalculator";
+import WidgetCalculator from "./WidgetCalculator";
 import { useState } from "react";
 import "../App.css";
 
@@ -35,7 +35,7 @@ export default function TrackOrder() {
   ) : (
     <div>
       <h1>You order is:</h1>
-      <OrderDisplay trackingNumber={trackingNumber} handleClick={handleClick} />
+      <WidgetCalculator trackingNumber={trackingNumber} handleClick={handleClick} />
     </div>
   );
 }
