@@ -9,6 +9,7 @@ function App() {
   return (
     <Router>
       <div className="card">
+        <Layout />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/order-form" element={<OrderForm />} />

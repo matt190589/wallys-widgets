@@ -11,6 +11,7 @@ export default function WidgetCalculator(props) {
   const userOrder = Number(props.newOrder.user_order);
   const trackingNumber = props.newOrder.tracking_number;
   let finalWidgetPacks = "0 packs";
+
   function widgetCounter() {
     if (userOrder === 0) {
       return finalWidgetPacks;
@@ -73,5 +74,10 @@ export default function WidgetCalculator(props) {
     }
   }
   widgetCounter();
-  return <OrderCard finalWidgetPacks={finalWidgetPacks} trackingNumber={trackingNumber} />;
+  return (
+    <OrderCard
+      finalWidgetPacks={finalWidgetPacks}
+      trackingNumber={trackingNumber}
+    />
+  );
 }

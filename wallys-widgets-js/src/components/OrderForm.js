@@ -58,7 +58,7 @@ export default function OrderForm() {
     </div>
   ) : (
     <div>
-      <h1>You order is:</h1>
+      <h2>Thank you for your order.</h2>
       <WidgetCalculator
         newOrder={newOrder}
         handleClick={handleClick}
