@@ -33,14 +33,14 @@ describe("widgetCalculator()", () => {
   it("correctly calculates widget packs when userOrder equal to 501", () => {
     const props = { newOrder: { user_order: 501 } };
     expect(WidgetCalculator(props)).toEqual(
-      <OrderCard finalWidgetPacks="1 x 500 and 1 x 250" />
+      <OrderCard finalWidgetPacks="1 x 500, 1 x 250" />
     );
   });
 
   it("correctly calculates widget packs when userOrder equal to 12001", () => {
     const props = { newOrder: { user_order: 12001 } };
     expect(WidgetCalculator(props)).toEqual(
-      <OrderCard finalWidgetPacks="2 x 5000s, 1 x 2000 and 1 x 250" />
+      <OrderCard finalWidgetPacks="2 x 5000s, 1 x 2000, 1 x 250" />
     );
   });
 });

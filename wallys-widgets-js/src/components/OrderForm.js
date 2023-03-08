@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import WidgetCalculator from "./WidgetCalculator";
 import { v4 as uuidv4 } from "uuid";
 import { supabase } from "../supabaseClient";
@@ -15,7 +15,7 @@ export default function OrderForm() {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    if (/^\d+$/.test(userOrder)) {
+    if (/^\d+$/.test(userOrder) && userOrder <= 1000000) {
       setOrderButtonStatus(true);
       const orderNum = "WW" + uuidv4().substring(0, 8);
       const newOrder = {
@@ -35,6 +35,10 @@ export default function OrderForm() {
       } catch (error) {
         console.log("Error inserting order", error);
       }
+    } else if (userOrder > 1000000) {
+      alert(
+        "That's a lot of widgets. We'll have to check before processing your order. The max order is 1,000,000 widgets."
+      );
     } else {
       alert("Please enter a valid number.");
     }
