@@ -50,15 +50,11 @@ export default function TrackOrder() {
       {orderData ? (
         <>
           <h1>You order is:</h1>
-          <WidgetCalculator
-            trackingNumber={trackingNumber}
-            handleClick={handleClick}
-            newOrder={orderData}
-          />
+          <WidgetCalculator newOrder={orderData} />
         </>
       ) : (
         <div className="order-card">
-          <p>Sorry, tracking number not found.</p>
+          <p>Searching for Widget Order. Please wait.</p>
           <button>
             <Link to="/">Home</Link>
           </button>
